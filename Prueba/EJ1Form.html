@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="EJ1Form.php">
+        Rellena el siguiente formulario para calcular el coste del envio.<br>
+        Precio: <input type="text" maxlength="5" name="precio"><br><br>
+        Cantidad: <input type="text" maxlength="5" name="cantidad"><br><br>
+        Descuento: <input type="text" maxlength="5" name="descuento"><br><br>
+        IVA  <input type="text" maxlength="3" name="iva"><br><br>
+        Método de envío: <select name="envio">
+            <optgroup>
+                <option value="0">Recoger tienda</option>
+                <option value="5">Correos</option>
+                <option value="8">Seur</option>
+            </optgroup>
+        </select> <br><br>
+        <input type="submit" value="Calcular el precio total">
+    </form>
+</body>
+</html>
