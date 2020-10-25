@@ -5,8 +5,8 @@
     $iva = $_POST['iva'];
     $metodo = $_POST['envio'];
 
-    if(isset($precio) && isset($cantidad) && isset($descuento) && isset($iva) && isset($metodo)){
-        echo "a";
+    if(!empty($precio) && !empty($cantidad) && !empty($descuento) && !empty($iva) && isset($metodo)){
+        echo (($precio+($precio*$iva))-$descuento)*($cantidad+$envio);
     }
 
 ?>
