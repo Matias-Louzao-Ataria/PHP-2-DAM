@@ -5,7 +5,7 @@
     $iva = $_POST['iva'];
     $metodo = $_POST['envio'];
 
-    if(!empty($precio) && !empty($cantidad) && !empty($descuento) && !empty($iva) && isset($metodo)){
+    if((!empty($precio) || $precio == false) && (!empty($cantidad) || $cantidad == false) && (!empty($descuento) || $descuento == false) && (!empty($iva) || $iva == false) && isset($metodo)){
         echo (($precio+($precio*($iva/100)))-$descuento)*($cantidad+$envio);
     }else{
         echo "Rellena el formulario!";
