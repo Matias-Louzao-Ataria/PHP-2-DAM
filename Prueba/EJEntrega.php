@@ -30,5 +30,10 @@ $error = false;
     }else{
         $error = true;
     }
-    echo $error;
+    
+    if($error){
+       echo "Existen errores en el formulario!"; 
+    }else{
+        echo"Registro realizado correctamente para el correo electrónico: ".$email.".";
+    }
 ?>

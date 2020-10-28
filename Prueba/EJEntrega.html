@@ -3,25 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="Text/JavaScript" src="EJEntrega.js"></script>
     <title>Document</title>
+    <style>
+        div{
+            color:red;
+        }
+    </style>
 </head>
 <body>
-    <script>
-        function comprobar() {
-            if(document.getElementById("nombre").innerHTML.length > 0){
-                return true;
-            }else{
-                return false;
-            }
-        }
-    </script>
     Rellena el siguiente formulario<br><br>
-    <form method="POST" action="EJEntrega.php">
+    <form method="POST" action="EJEntrega.php" onsubmit="return comprobar();">
         Nombre: <input type="text" name="nombre" id="nombre"><br><br>
         Email: <input type="text" name="email" id="email"><br><br>
         Contraseña: <input type="password" name="pass" id="pass"><br><br>
         Repetir contraseña: <input type="password" name="pass2" id="pass2"><br><br>
-        <input type="submit" value="Enviar Datos" onsubmit="return comprobar();"><!--No ejecuta bien esta funcion-->
+        <input type="submit" value="Enviar Datos"><!--No ejecuta bien esta funcion-->
     </form>
     <!--Comprobar en javascript y en php-->
 </body>
