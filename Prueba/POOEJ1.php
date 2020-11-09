@@ -9,62 +9,62 @@ class Libro{
     private $contieneCD;
     
     public function getTitulo(){
-        return this.$titulo;
+        return $this -> titulo;
     }
     
     public function getAutor(){
-        return $autor;
+        return $this ->  autor;
     }
     
     public function getPaginas(){
-        return this.$paginas;
+        return $this -> paginas;
     }
     
     public function getPrestado(){
-        return this.$prestado;
+        return $this -> prestado;
     }
     
     public function contieneCD(){
-        return this.$contieneCD;
+        return $this -> contieneCD;
     }
     
     public function setRefLibro($a){
         if(strlen($a) > 3){
-            this.$refLibro = $a;
+            $this -> refLibro = $a;
         }else{
             echo "Cadena invalida!";
         }
     }
     
     public function setPrestado(){
-        $this.$prestado++;
+        $this -> prestado++;
     }
     
     public function printTitulo(){
-        echo this.$titulo;
+        echo $this -> titulo;
     }
     
     public function printAutor(){
-        echo this.$autor;
+        echo $this -> autor;
     }
     
     public function printLibro(){
-        echo this.$titulo;
-        echo $autor;
-        echo this.$paginas;
-        if(strlen(this.$refLibro) > 0){
-            echo this.$refLibro;
+        echo $this -> getTitulo()."\n";
+        echo $this -> getAutor()."\n";
+        echo $this -> getPaginas()."\n";
+        if(strlen($refLibro) > 0){
+            echo $this -> refLibro."\n";
         }
-        echo this.$prestado;
+        echo $this -> prestado."\n";
     }
     
     public function __construct(){
         $this -> setRefLibro("asdd");
-        this.$contieneCD = false;
+        $this -> contieneCD = false;
     }
 } 
 
-$l = new Libro();
-$l -> printLibro();
+/*$l = new Libro();
+$l -> printLibro();*/
 
 ?>
