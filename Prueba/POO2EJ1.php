@@ -1,5 +1,5 @@
 <?php
-//require("../POOEJ1.php");// En php se importa así. require("ruta hasta el archivo");
+//require("POOEJ1.php");// En php se importa así. require("ruta hasta el archivo");
 
 /*$l = new Libro();
 $l -> printTitulo();*/
