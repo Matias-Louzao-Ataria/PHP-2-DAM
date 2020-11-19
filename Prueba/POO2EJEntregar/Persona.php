@@ -2,10 +2,10 @@
 
 class Persona{
    private $edad = 0;
-   private $dni = null;
-   private $nombre = null;
-   private $concello = null;
-   private $passvigo = null;
+   private $dni = "";
+   private $nombre = "";
+   private $concello = "";
+   private $passvigo = false;
 
     public function setNombre($nombre){
         if($nombre == null || strlen($nombre) <= 0){
@@ -24,11 +24,21 @@ class Persona{
             if($dni != null){
                 $this -> dni = null;
             }else{
-                $this -> dni = $dni;
+                if(Persona::comprobarDNI($dni)){
+                    $this -> dni = $dni;
+                }else{
+                    $this -> dni = null;
+                }
             }
         }else{
-            if(!($dni != null)){
-                $this -> dni = dni;
+            if($dni != null){
+                if(Persona::comprobarDNI($dni)){
+                    $this -> dni = $dni;
+                }else{
+                    $this -> dni = null;
+                }
+            }else{
+                $this -> dni = null;
             }
         }
     }
@@ -60,18 +70,41 @@ class Persona{
     }
 
     public function setPassvigo($passvigo){
-        if($concello != "Vigo"){
-            $this -> passvigo = null;
+        if($this -> concello != "Vigo"){
+            $this -> passvigo = false;
         }else{
             $this -> passvigo = $passvigo;
         }
     }
 
-    public function getPassvigo(){
+    public function hasPassvigo(){
         return $this -> passvigo;
     }
 
-   public function __construct($nombre,$edad,$dni = null,$concello,$passvigo = null){
+    public static function comprobarDNI($dni){
+        $cont = 0;
+        $letra;
+        if(strlen($dni) == 9){
+            for($i = 0;$i < strlen($dni);$i++){
+                if($dni[$i] >= 1 || $dni[$i] <= 9){
+    
+                }else{
+                    if($i == strlen($str)-1){
+                        if($dni[$i] >= 65 || $dni[$i] <= 90){
+                            
+                        }
+                    }else{
+                        return false;
+                    }
+                }
+            }
+        }else{
+            return false;
+        }
+        return true;
+    }
+
+   public function __construct($nombre,$edad,$dni,$concello,$passvigo){
         $this -> setNombre($nombre);
         $this -> setEdad($edad);
         $this-> setDni($dni);
@@ -79,5 +112,4 @@ class Persona{
         $this -> setPassvigo($passvigo);
    }
 }
-
 ?>
