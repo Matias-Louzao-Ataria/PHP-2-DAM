@@ -21,7 +21,7 @@ class Persona{
 
     public function setDni($dni){
         if($this -> edad < 18){
-            if($dni != null){
+            if($dni == null){
                 $this -> dni = null;
             }else{
                 if(Persona::comprobarDNI($dni)){
@@ -66,7 +66,7 @@ class Persona{
     }
 
     public function getConcello(){
-        
+        return $this -> concello;
     }
 
     public function setPassvigo($passvigo){
