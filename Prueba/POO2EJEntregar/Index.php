@@ -21,6 +21,7 @@ echo "<br>";
 $n -> ListaPasajeros();
 echo '<br>';
 $n -> finViaje($p)."B";
+//$n -> finViaje(new Persona("A",3,"12245678A","C",true));
 echo '<br>';
 echo $n -> getPasajerosActuales()." pasajeros";
 echo "<br>";

@@ -29,7 +29,7 @@ class Noria{
     }
 
     public function finViaje($persona){
-        $pos = array_search($persona,$this -> pasajeros);
+        $pos = array_search($persona,$this -> pasajeros,true);
         if(is_int($pos)){
             array_splice($this -> pasajeros,$pos,1);
             return true;
