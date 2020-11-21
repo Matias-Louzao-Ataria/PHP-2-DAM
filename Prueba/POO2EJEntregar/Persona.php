@@ -70,7 +70,7 @@ class Persona{
     }
 
     public function setPassvigo($passvigo){
-        if($this -> concello != "Vigo"){
+        if(strcasecmp($this -> concello,"Vigo") != 0){
             $this -> passvigo = false;
         }else{
             $this -> passvigo = $passvigo;

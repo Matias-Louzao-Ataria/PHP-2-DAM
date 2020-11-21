@@ -1,7 +1,6 @@
 <?php
-
+    define('_MAXPASAJEROS',2);
 class Noria{
-    public static $maxPersonas = 8;
     private $pasajeros = [];
     private $totalClientes = 0;
     public function __construct(){
@@ -9,30 +8,44 @@ class Noria{
     }
 
     public function inicioViaje($persona){
-        if($persona != null){
-            if($persona -> getDni() != null){
-                if($this -> comprobarPasajerosLegitimos($persona -> getDni())){
-                    array_push($this -> pasajeros,$persona);
-                    $this -> totalClientes++;
+        if(count($this -> pasajeros) < _MAXPASAJEROS){
+            if($persona != null){
+                if($persona -> getDni() != null){
+                    if($this -> comprobarPasajerosLegitimos($persona -> getDni())){
+                        array_push($this -> pasajeros,$persona);
+                        echo $persona -> getNombre()." ha subido correctamente!";
+                        $this -> totalClientes++;
+                        return true;
+                    }else{
+                        echo "Sospechoso detenido, ese DNI ya ha sido utilizado por alguien que está subido actualmente!";
+                    }
                 }else{
-                    return false;
+                    if($persona -> getEdad() < 18){
+                        array_push($this -> pasajeros,$persona);
+                        echo $persona -> getNombre()." ha subido correctamente!";
+                        $this -> totalClientes++;
+                        return true;
+                    }else{
+                        echo "Si usted es mayor de 18 años necesita un DNI para subir!";
+                    }
                 }
             }else{
-                if($persona -> getEdad() < 18){
-                    $this -> totalClientes++;
-                    array_push($this -> pasajeros,$persona);
-                    return true;
-                }
+                echo "La persona que ha intentado subir en realidad no está aquí!";
             }
+        }else{
+            echo "Usted no puede subir porque la noria está llena!";
         }
         return false;
     }
 
     public function finViaje($persona){
         $pos = array_search($persona,$this -> pasajeros,true);
-        if(is_int($pos)){
+        if($pos !== false){
             array_splice($this -> pasajeros,$pos,1);
+            echo $persona -> getNombre()." se ha bajado correctamente!";
             return true;
+        }else{
+            echo $persona -> getNombre()." de DNI: ".$persona -> getDni().", edad: ".$persona -> getEdad()." años y concello de: ".$persona -> getConcello()." no está subido al a noria y por lo tanto no puede bajarse!";
         }
         return false;
     }
@@ -42,7 +55,7 @@ class Noria{
         $extranjero = 0;
         for($j = 0;$j < count($this -> pasajeros);$j++){
             $personaActual = $this -> pasajeros[$j];
-            if(strcasecmp($personaActual -> getConcello(),"vigo") == 0){
+            if(strcasecmp($personaActual -> getConcello(),"Vigo") == 0){
                 $extranjero = 0;
             }else{
                 $extranjero = 3;
